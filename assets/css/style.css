@@ -1,0 +1,47 @@
+body {
+    background-color: rgb(244, 201, 123);
+}
+
+p {
+    max-width: 200px;
+}
+
+div {
+    float: left;
+}
+
+img {
+    margin: 15px;
+}
+
+form {
+    float: right;
+}
+
+#reaction-buttons {
+    width: 100%;
+}
+
+.search-feature {
+    width: 300px;
+    float: right;
+    margin-right: 20px;
+}
+
+#reactions-go-here {
+    max-width: 1000px;
+}
+
+button, #find-gifs {
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: rgb(44, 198, 198);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 18px;
+}
