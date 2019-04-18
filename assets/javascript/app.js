@@ -2,6 +2,7 @@
 var reactions = ["excited", "confused", "omg", "ouch", "aww", "nervous", "lol"]
 // Create a function that re-renders HTML to have appropriate content
 function displayReactionGifs() {
+    // empties any previous gifs on the page
     $("#reactions-go-here").empty();
     var reaction = $(this).attr("reaction-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + reaction + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -10,10 +11,11 @@ function displayReactionGifs() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-
+        // creating a variable for the info we care about
         var results = response.data;
-        console.log(response);
+        console.log(response.data);
         for (var i = 0; i < results.length; i++) {
+            // creating divs for each gif and adding attributes
             var gifDiv = $("<div>");
             var rating = results[i].rating;
             var newP = $("<p>").text("Rating: " + rating);
@@ -35,6 +37,7 @@ function displayReactionGifs() {
 
 }
 
+// function that puts reaction buttons on the page
 function renderButtons() {
     // added to avoid repeat buttons
     $("#reaction-buttons").empty();
@@ -49,8 +52,7 @@ function renderButtons() {
 }
 
 
-
-// Create a function that events when someone submits a reaction
+// Function that creates a new button when user submits a reaction
 $("#find-gifs").on("click", function(event) {
     // prevent default
     event.preventDefault();
@@ -62,11 +64,12 @@ $("#find-gifs").on("click", function(event) {
     renderButtons();
 });
 
-// Add an event listener to all the elements with a class of "reaction-btn"
+// Adds gif divs to page on click of reaction button
 $(document).on("click", ".reaction-btn", displayReactionGifs)
 // call renderButtons to display initial buttons
 renderButtons();
 
+// Toggles between still and animate on click of gif
 $(document).on("click", ".gif", function() {
     var state = $(this).attr("data-state");
         if (state === "still") {
