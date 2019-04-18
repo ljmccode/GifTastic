@@ -18,7 +18,11 @@ function displayReactionGifs() {
             var rating = results[i].rating;
             var newP = $("<p>").text("Rating: " + rating);
             var reactionImage = $("<img>");
-            reactionImage.attr("src", results[i].images.fixed_height.url);
+            reactionImage.attr("src", results[i].images.fixed_height_still.url);
+            reactionImage.attr("data-still", results[i].images.fixed_height_still.url);
+            reactionImage.attr("data-animate", results[i].images.fixed_height.url);
+            reactionImage.attr("data-state", "still");
+            reactionImage.addClass("gif");
 
             gifDiv.append(newP);
             gifDiv.append(reactionImage);
@@ -62,3 +66,17 @@ $("#find-gifs").on("click", function(event) {
 $(document).on("click", ".reaction-btn", displayReactionGifs)
 // call renderButtons to display initial buttons
 renderButtons();
+
+$(document).on("click", ".gif", function() {
+    var state = $(this).attr("data-state");
+        if (state === "still") {
+            var animateValue = $(this).attr("data-animate")
+             $(this).attr("src", animateValue);
+             $(this).attr("data-state", "animate")
+        }
+        if (state === "animate") {
+            var animateValue = $(this).attr("data-still")
+            $(this).attr("src", animateValue);
+            $(this).attr("data-state", "still")
+        }
+})
