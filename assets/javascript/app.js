@@ -5,7 +5,7 @@ function displayReactionGifs() {
     // empties any previous gifs on the page
     $("#reactions-go-here").empty();
     var reaction = $(this).attr("reaction-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + reaction + "&api_key=dc6zaTOxFJmzC&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + reaction + "&api_key=qmkqohWJ6egnDPXUnYEw9vsuunWnzqHH&limit=10";
 
     $.ajax({
         url: queryURL,
