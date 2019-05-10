@@ -7,5 +7,6 @@ Make your favorite reaction GIFs come to life! Click on any of the reaction butt
 * HTML
 * CSS
 * Javascript
+* jQuery
 * GIPHY API
 * Pausing GIFs
